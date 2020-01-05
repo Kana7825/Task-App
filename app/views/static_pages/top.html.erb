@@ -12,9 +12,21 @@
 
 <div class= "col-md-4">
   <h1>ログイン</h1>
-  <%= form_with()%>
+  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+  
+    <%= f.label :email, class: "label-login" %>
+    <%= f.email_field :email, class: 'form-control' %>
+    
+    <%= f.label :password, class: "label-login" %>
+    <%= f.password_field :password, class: 'form-control' %>
  
-    <%= link_to "Log In", login_path, class: "btn btn-lg btn-primary" %>
+    <%= f.label :remember_me, class:"checkbox inline dheckbox-login", for: "remember_me" do %>
+      <%= f.check_box :remember_me, id: "remember_me" %>
+      <span>ログイン情報を記憶する</span>
+      <% end %>
+   
+    <%= link_to "ログイン", login_path, class: "btn btn-block btn-primary" %>
+  <% end %>
   </div>
 </div>
 </div>
